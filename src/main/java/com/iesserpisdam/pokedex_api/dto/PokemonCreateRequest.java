@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class PokemonCreateRequest {
     private int idPokedex;
     @NotNull
@@ -19,4 +18,5 @@ public class PokemonCreateRequest {
     private PokemonEvolution evolution;
     private int height;
     private int weight;
+
 }

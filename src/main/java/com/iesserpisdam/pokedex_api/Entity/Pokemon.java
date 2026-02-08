@@ -80,4 +80,11 @@ public class Pokemon {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public LocalDateTime getOpenedAt() {
+        return openedAt;
+    }
+    public void setOpenedAt(LocalDateTime openedAt) {
+        this.openedAt = openedAt;
+    }
 }
