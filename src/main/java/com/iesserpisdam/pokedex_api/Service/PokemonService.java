@@ -40,6 +40,12 @@ public class PokemonService {
         if(repository.existsByIdPokedex(request.getIdPokedex())){
             throw new IllegalArgumentException("¡Ya existe un pokemon con este id en la pokedex!");
         }
+        if (request.getHeight() < 0) {
+            throw new IllegalArgumentException("¡Valor para la altura no válido!");
+        }
+        if (request.getWeight() < 0) {
+            throw new IllegalArgumentException("¡Valor para el peso no válido!");
+        }
 
         Pokemon newPokemon = repository.save(pokemon);
         return mapToResponse(newPokemon);
@@ -66,6 +72,12 @@ public class PokemonService {
         }
         if(repository.existsByIdPokedex(request.getIdPokedex())){
             throw new IllegalArgumentException("¡Ya existe un pokemon con este id en la pokedex!");
+        }
+        if (request.getHeight() < 0) {
+            throw new IllegalArgumentException("¡Valor para la altura no válido!");
+        }
+        if (request.getWeight() < 0) {
+            throw new IllegalArgumentException("¡Valor para el peso no válido!");
         }
 
         Pokemon updatePokemon = repository.save(pokemon);

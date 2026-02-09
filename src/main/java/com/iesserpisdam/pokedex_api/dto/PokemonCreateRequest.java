@@ -4,6 +4,7 @@ import com.iesserpisdam.pokedex_api.Entity.PokemonEvolution;
 import com.iesserpisdam.pokedex_api.Entity.PokemonType;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,9 @@ public class PokemonCreateRequest {
     private PokemonType type;
     @NotNull
     private PokemonEvolution evolution;
+    @Positive
     private int height;
+    @Positive
     private int weight;
 
 }

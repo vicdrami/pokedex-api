@@ -1,6 +1,7 @@
 package com.iesserpisdam.pokedex_api.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +19,9 @@ public class Pokemon {
     private PokemonType type;
     @Enumerated(EnumType.STRING)
     private PokemonEvolution evolution;
+    @Min(0)
     private int height;
+    @Min(0)
     private int weight;
     private LocalDateTime openedAt;
 
