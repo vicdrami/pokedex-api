@@ -22,8 +22,7 @@ public class Pokemon {
     private int weight;
     private LocalDateTime openedAt;
 
-    public Pokemon () {
-    }
+    public Pokemon () {}
 
     public Long getId() {
         return id;
@@ -84,6 +83,7 @@ public class Pokemon {
     public LocalDateTime getOpenedAt() {
         return openedAt;
     }
+
     public void setOpenedAt(LocalDateTime openedAt) {
         this.openedAt = openedAt;
     }

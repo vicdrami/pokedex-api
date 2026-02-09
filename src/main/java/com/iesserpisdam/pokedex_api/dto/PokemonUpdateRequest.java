@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class PokemonUpdateRequest {
     @NotNull
+    private int idPokedex;
+    @NotNull
     private String name;
     @NotNull
     private PokemonType type;

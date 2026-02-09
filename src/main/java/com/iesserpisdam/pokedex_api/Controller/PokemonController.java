@@ -19,6 +19,8 @@ public class PokemonController {
     public PokemonController(PokemonService service) {
         this.service = service;
     }
+
+    /* Compropar conexión */
     @GetMapping("ping")
     public String ping() {
         return "¡¡¡Cázalos a todos!!!";
@@ -54,16 +56,19 @@ public class PokemonController {
     }
 
     /* Listar por id */
+    @GetMapping("/{id}")
     public PokemonResponse findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
     /* Listar por tipo */
+    @GetMapping("/type/{type}")
     public List<PokemonResponse> findByType(@PathVariable PokemonType type) {
         return service.findByType(type);
     }
 
     /* Listar por evolución */
+    @GetMapping("/evolution/{evolution}")
     public List<PokemonResponse> findByEvolution(@PathVariable PokemonEvolution evolution) {
         return service.findByEvolution(evolution);
     }

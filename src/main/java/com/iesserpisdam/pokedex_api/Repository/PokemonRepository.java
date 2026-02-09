@@ -10,4 +10,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon, Long> {
     List<Pokemon> findByType(PokemonType type);
     List<Pokemon> findByEvolution(PokemonEvolution evolution);
     List<Pokemon> findByTypeAndEvolution(PokemonType type, PokemonEvolution evolution);
+
+    boolean existsByName(String name);
+    boolean existsByIdPokedex(int idPokedex);
 }
