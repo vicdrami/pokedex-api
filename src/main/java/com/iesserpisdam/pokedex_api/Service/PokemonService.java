@@ -46,11 +46,11 @@ public class PokemonService {
     }
 
     /* Modificar pokemon */
-    public PokemonResponse update(Long id, PokemonUpdateRequest request) {
-        Pokemon pokemon = repository.findById(id)
+    public PokemonResponse update(int idPokedex, PokemonUpdateRequest request) {
+        Pokemon pokemon = repository.findByIdPokedex(idPokedex)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
-                        "¡No se ha encontrado el pokemon con el id: " + id + "!"
+                        "¡No se ha encontrado el pokemon con el id: " + idPokedex + "!"
                 ));
         pokemon.setIdPokedex(request.getIdPokedex());
         pokemon.setName(request.getName());
@@ -72,15 +72,20 @@ public class PokemonService {
         return mapToResponse(updatePokemon);
     }
 
+    /* Borrar pokemons */
+    public void deleteAll(Pokemon pokemon) {
+       repository.delete(pokemon);
+    }
+
     /* Borrar pokemon */
-    public void delete(Long id) {
-        if (!repository.existsById(id)) {
+    public void delete(int idPokedex) {
+        if (!repository.existsByIdPokedex(idPokedex)) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
-                    "¡No se ha encontrado el pokemon con el id: " + id + "!"
+                    "¡No se ha encontrado el pokemon con el id: " + idPokedex + "!"
             );
         }
-        repository.deleteById(id);
+        repository.deleteByIdPokdex(idPokedex);
     }
 
     /* Listar todos los pokemons */
@@ -91,12 +96,12 @@ public class PokemonService {
             .toList();
     }
 
-    /* Listar por id*/
-    public PokemonResponse findById(Long id) {
-        Pokemon pokemon = repository.findById(id)
+    /* Listar por id de la pokedex */
+    public PokemonResponse findByIdPokedex(int idPokedex) {
+        Pokemon pokemon = repository.findByIdPokedex(idPokedex)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
-                        "¡No se ha encontrado el pokemon con el id: " + id + "!"
+                        "¡No se ha encontrado el pokemon con el id: " + idPokedex + "!"
                         ));
         return mapToResponse(pokemon);
     }

@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class PokemonResponse {
-    private Long id;
     private int idPokedex;
     private String name;
     private PokemonType type;

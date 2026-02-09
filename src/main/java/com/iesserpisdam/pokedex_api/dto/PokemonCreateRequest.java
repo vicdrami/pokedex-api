@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PokemonCreateRequest {
+    @NotNull
     private int idPokedex;
     @NotNull
     private String name;

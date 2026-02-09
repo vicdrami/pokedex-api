@@ -1,5 +1,6 @@
 package com.iesserpisdam.pokedex_api.Controller;
 
+import com.iesserpisdam.pokedex_api.Entity.Pokemon;
 import com.iesserpisdam.pokedex_api.Entity.PokemonEvolution;
 import com.iesserpisdam.pokedex_api.Entity.PokemonType;
 import com.iesserpisdam.pokedex_api.Service.PokemonService;
@@ -34,19 +35,19 @@ public class PokemonController {
     }
 
     /* Modificar pokemon */
-    @PutMapping("/{id}")
+    @PutMapping("/{idPokedex}")
     public PokemonResponse update(
-            @PathVariable Long id,
+            @PathVariable int idPokedex,
             @Valid @RequestBody PokemonUpdateRequest request
     ) {
-        return service.update(id, request);
+        return service.update(idPokedex, request);
     }
 
     /* Borrar pokemon */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idPokedex}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
+    public void delete(@PathVariable int idPokedex) {
+        service.delete(idPokedex);
     }
 
     /* Listar todos los pokemons */
@@ -55,10 +56,17 @@ public class PokemonController {
         return service.findAll();
     }
 
-    /* Listar por id */
-    @GetMapping("/{id}")
-    public PokemonResponse findById(@PathVariable Long id) {
-        return service.findById(id);
+    /* Borrar todos los pokemons */
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAll(@PathVariable Pokemon pokemon) {
+        service.deleteAll(pokemon);
+    }
+
+    /* Listar por id de la pokedex*/
+    @GetMapping("/{idPokedex}")
+    public PokemonResponse findByIdPokedex(@PathVariable int idPokedex) {
+        return service.findByIdPokedex(idPokedex);
     }
 
     /* Listar por tipo */
